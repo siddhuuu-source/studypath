@@ -329,7 +329,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     return fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:toContents(input),json:!!json})})
     .then(function(r){
       if(r.status===429) throw {code:"rate_limited"};
-      if(!r.ok) throw {code:"error"};
+      if(!r.ok) return r.text().then(function(t){throw {code:"error",status:r.status,detail:t.slice(0,250)}});
       return r.json();
     }).then(function(d){
       if(!d||typeof d.text!=="string"||!d.text) throw {code:"error"};
@@ -350,7 +350,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     if(e && e.code==="none") return "AI is not set up yet.";
     if(e && e.code==="not_granted") return "AI access was not allowed. Reload the page and allow it to continue.";
     if(e && e.code==="rate_limited") return "Too many requests. Wait a moment and try again.";
-    return "Something went wrong. Please try again.";
+    return "Something went wrong. Please try again."+(e&&e.status?" [Error "+e.status+": "+(e.detail||"")+"]":(e instanceof TypeError?" [Blocked: check ALLOWED_ORIGIN in Cloudflare]":""));
   }
   function busy(el,label){el.textContent="";var b=h("div","busy");b.appendChild(h("span","spin"));b.appendChild(h("span",null,label||"Working on it"));el.appendChild(b)}
   function setBtn(btn,on,label){
