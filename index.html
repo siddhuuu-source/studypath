@@ -57,7 +57,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 
 .main{min-width:0;display:flex;flex-direction:column;gap:18px}
 .panel{display:flex;flex-direction:column;gap:18px;min-width:0}
-.panel[hidden]{display:none}
+.panel{scroll-margin-top:24px}.panel+.panel{margin-top:30px;padding-top:30px;border-top:1px solid var(--line)}@media(max-width:859px){.nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0}.panel{scroll-margin-top:70px}}
 .panel-head h2{font:800 1.45rem/1.2 var(--display);letter-spacing:-.015em;margin:0 0 4px}
 .panel-head p{margin:0;color:var(--muted)}
 
@@ -184,7 +184,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       <div id="aiBanner" class="banner" hidden></div>
 
       <!-- GET ANSWERS -->
-      <section class="panel" id="p-ask" role="tabpanel" aria-labelledby="t-ask">
+      <section class="panel" id="p-ask" role="region" aria-labelledby="t-ask">
         <div class="panel-head">
           <h2>Get answers</h2>
           <p>Ask any school or college question. You get the method and the working, so you can solve the next one yourself.</p>
@@ -229,7 +229,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       </section>
 
       <!-- CAREER GUIDE -->
-      <section class="panel" id="p-career" role="tabpanel" aria-labelledby="t-career" hidden>
+      <section class="panel" id="p-career" role="region" aria-labelledby="t-career">
         <div class="panel-head">
           <h2>Career guide</h2>
           <p>Tell us what you enjoy and where you are now. You get three paths that fit, each with a step-by-step route and a 30-day plan.</p>
@@ -261,7 +261,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       </section>
 
       <!-- MENTOR CHAT -->
-      <section class="panel" id="p-chat" role="tabpanel" aria-labelledby="t-chat" hidden>
+      <section class="panel" id="p-chat" role="region" aria-labelledby="t-chat">
         <div class="panel-head">
           <h2>Mentor chat</h2>
           <p>Ask about study plans, exams, skills, college choices or handling stress before tests.</p>
@@ -283,7 +283,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       </section>
 
       <!-- QUICK FAQ -->
-      <section class="panel" id="p-faq" role="tabpanel" aria-labelledby="t-faq" hidden>
+      <section class="panel" id="p-faq" role="region" aria-labelledby="t-faq">
         <div class="panel-head">
           <h2>Quick FAQ</h2>
           <p>Short answers to questions students ask most. This section works without AI.</p>
@@ -293,6 +293,14 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
         </label>
         <div class="faq" id="faqList"></div>
         <p class="note" id="faqEmpty" hidden>No match. Ask the Mentor chat for a custom answer.</p>
+      </section>
+
+      <section class="panel" id="p-about" aria-labelledby="aboutH">
+        <div class="panel-head">
+          <h2 id="aboutH">About StudyPath</h2>
+          <p>StudyPath is a free guide for school and college students. Ask a homework question and get the method and working, not just the answer. Tell us your interests and get three realistic career paths with a 30-day plan. Chat with a mentor about study plans, exams and stress, or search the quick FAQ for common questions.</p>
+        </div>
+        <p class="note">StudyPath uses AI and can make mistakes. Always check exams, fees and dates with official sources, and talk to a teacher or counsellor before big decisions.</p>
       </section>
     </main>
   </div>
@@ -390,12 +398,15 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
   var tabs=["ask","career","chat","faq"];
   tabs.forEach(function(n){
     $("t-"+n).addEventListener("click",function(){
-      tabs.forEach(function(k){
-        $("t-"+k).setAttribute("aria-selected",k===n?"true":"false");
-        $("p-"+k).hidden = k!==n;
-      });
+      $("p-"+n).scrollIntoView({behavior:"smooth",block:"start"});
     });
   });
+  if(window.IntersectionObserver){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){var id=e.target.id.slice(2);tabs.forEach(function(k){$("t-"+k).setAttribute("aria-selected",k===id?"true":"false")})}
+    })},{rootMargin:"-30% 0px -60% 0px"});
+    tabs.forEach(function(k){io.observe($("p-"+k))});
+  }
 
   /* ---------- get answers ---------- */
   var lastQ="",lastA="";
