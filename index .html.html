@@ -1,0 +1,577 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><title>StudyPath - Homework help, career guide and study mentor for students</title><meta name="description" content="Free tool for school and college students: step-by-step homework explanations, personalised career paths, a study mentor chat and a quick FAQ."><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+/* Layout: navy brand band on top, sidebar navigation beside a content column, neutral cards with one teal action colour */
+:root{
+  --bg:#F2F5FA; --surface:#FFFFFF; --fg:#0F172A; --muted:#5A6579; --line:#E1E7F0; --soft:#EEF3FA;
+  --accent:#0D8F82; --accent-fg:#FFFFFF; --accent-soft:#DDF3F0; --accent-ink:#0A6B61;
+  --band:#14244A; --band-fg:#FFFFFF; --band-muted:#B7C3DD; --band-line:rgba(255,255,255,.16);
+  --danger:#B42318; --warn-bg:#FFF4D6; --warn-fg:#7A5200; --ok-bg:#DDF3E4; --ok-fg:#14602F;
+  --shadow:0 1px 2px rgba(15,23,42,.05),0 4px 14px rgba(15,23,42,.05);
+  --display:"Manrope","Segoe UI",system-ui,sans-serif;
+  --body:"Inter","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0A111F; --surface:#111B2E; --fg:#E6EBF5; --muted:#9AA7BF; --line:#223049; --soft:#16233A;
+    --accent:#2DD4BF; --accent-fg:#04211C; --accent-soft:#12302F; --accent-ink:#5EEAD4;
+    --band:#0C1731; --band-fg:#FFFFFF; --band-muted:#9FB0D0; --band-line:rgba(255,255,255,.12);
+    --danger:#F97066; --warn-bg:#3A2E0E; --warn-fg:#F5D27A; --ok-bg:#123421; --ok-fg:#86E3A6;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25); color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0A111F; --surface:#111B2E; --fg:#E6EBF5; --muted:#9AA7BF; --line:#223049; --soft:#16233A;
+  --accent:#2DD4BF; --accent-fg:#04211C; --accent-soft:#12302F; --accent-ink:#5EEAD4;
+  --band:#0C1731; --band-fg:#FFFFFF; --band-muted:#9FB0D0; --band-line:rgba(255,255,255,.12);
+  --danger:#F97066; --warn-bg:#3A2E0E; --warn-fg:#F5D27A; --ok-bg:#123421; --ok-fg:#86E3A6;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 14px rgba(0,0,0,.25); color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:15.5px/1.6 var(--body);margin:0;padding:0}
+.inner{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+/* brand band */
+.band{background:var(--band);color:var(--band-fg);margin-top:calc(-1*env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 22px);padding-bottom:26px}
+.band .inner{display:flex;flex-direction:column;gap:16px}
+.logo{display:flex;align-items:center;gap:12px}
+.mark{width:40px;height:40px;border-radius:10px;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;flex:0 0 auto}
+.brand{font:800 1.45rem/1 var(--display);letter-spacing:-.02em;margin:0}
+.brand-sub{margin:2px 0 0;font-size:.82rem;color:var(--band-muted)}
+.hero-title{font:800 clamp(1.5rem,4vw,2.1rem)/1.15 var(--display);letter-spacing:-.02em;margin:0;max-width:640px;text-wrap:balance}
+.hero-sub{margin:0;color:var(--band-muted);max-width:620px}
+.points{display:flex;flex-wrap:wrap;gap:8px 22px;padding:14px 0 0;margin:0;list-style:none;border-top:1px solid var(--band-line);font-size:.88rem;color:var(--band-muted)}
+.points li{display:flex;align-items:center;gap:8px}
+.points svg{width:16px;height:16px;color:var(--accent)}
+
+/* shell */
+.shell{display:grid;grid-template-columns:1fr;gap:20px;padding-block:22px 8px}
+@media (min-width:860px){.shell{grid-template-columns:210px minmax(0,1fr);gap:32px;padding-block:30px 8px}}
+.nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px}
+@media (min-width:860px){.nav{flex-direction:column;overflow:visible;position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px);align-self:start}}
+.nav button{display:flex;align-items:center;gap:10px;flex:0 0 auto;font:600 .92rem var(--body);color:var(--muted);background:transparent;border:1px solid transparent;border-radius:10px;padding:10px 14px;cursor:pointer;text-align:left;white-space:nowrap}
+.nav button svg{width:18px;height:18px;flex:0 0 auto}
+.nav button:hover{background:var(--soft);color:var(--fg)}
+.nav button[aria-selected="true"]{background:var(--surface);color:var(--accent-ink);border-color:var(--line);box-shadow:var(--shadow)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+.main{min-width:0;display:flex;flex-direction:column;gap:18px}
+.panel{display:flex;flex-direction:column;gap:18px;min-width:0}
+.panel[hidden]{display:none}
+.panel-head h2{font:800 1.45rem/1.2 var(--display);letter-spacing:-.015em;margin:0 0 4px}
+.panel-head p{margin:0;color:var(--muted)}
+
+/* cards and form controls */
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:20px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+label,.lbl{display:flex;flex-direction:column;gap:6px;font-weight:600;font-size:.86rem;min-width:0}
+.hint{font-weight:400;color:var(--muted);font-size:.8rem}
+input,select,textarea{font:400 .98rem var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;width:100%;min-width:0}
+input::placeholder,textarea::placeholder{color:var(--muted);opacity:.8}
+textarea{resize:vertical;min-height:110px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 .86rem var(--body);color:var(--fg);background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 13px;cursor:pointer}
+.chip:hover{border-color:var(--accent)}
+.chip[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 .95rem var(--body);background:var(--accent);color:var(--accent-fg);border:0;border-radius:10px;padding:11px 20px;cursor:pointer}
+.btn:hover{filter:brightness(1.06)}
+.btn.ghost{background:var(--surface);color:var(--fg);border:1px solid var(--line)}
+.btn:disabled{opacity:.6;cursor:progress}
+.mini{font:600 .8rem var(--body);background:var(--soft);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:5px 10px;cursor:pointer}
+.actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;display:inline-block;animation:sp .8s linear infinite;flex:0 0 auto}
+@keyframes sp{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.spin{animation-duration:2.4s}}
+
+/* results */
+.out{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);min-width:0;overflow:hidden}
+.out[hidden]{display:none}
+.out-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--soft)}
+.out-title{font:700 .85rem var(--display);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.out-body{padding:18px;overflow-wrap:anywhere}
+.out-body.err{color:var(--danger);font-weight:500}
+.out-body h4{font:700 1rem var(--display);margin:16px 0 6px}
+.out-body h4:first-child{margin-top:0}
+.out-body p{margin:0 0 10px}.out-body ul,.out-body ol{margin:0 0 10px;padding-left:1.3em}
+.out-body li{margin-bottom:4px}
+.busy{display:flex;align-items:center;gap:10px;color:var(--muted)}
+.note{font-size:.82rem;color:var(--muted);margin:0}
+.banner{background:var(--warn-bg);color:var(--warn-fg);border-radius:10px;padding:11px 14px;font-size:.88rem}
+.banner[hidden]{display:none}
+
+/* career cards */
+.summary{margin:0;font-size:1.02rem}
+.careers{display:flex;flex-direction:column;gap:16px}
+.career{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.career-top{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px}
+.career h3{font:800 1.2rem/1.25 var(--display);margin:0;letter-spacing:-.01em}
+.pill{font:600 .74rem var(--body);border-radius:999px;padding:3px 10px;background:var(--accent-soft);color:var(--accent-ink);white-space:nowrap}
+.pill.good{background:var(--ok-bg);color:var(--ok-fg)}
+.pill.stretch{background:var(--warn-bg);color:var(--warn-fg)}
+.career p{margin:0}
+.skills{display:flex;flex-wrap:wrap;gap:6px}
+.skills span{background:var(--soft);border:1px solid var(--line);border-radius:6px;padding:2px 9px;font-size:.82rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.career h5{margin:0 0 6px;font:700 .74rem var(--body);text-transform:uppercase;letter-spacing:.09em;color:var(--muted)}
+.career ul,.career ol{margin:0;padding-left:1.2em}
+.career li{margin-bottom:4px}
+.reality{background:var(--soft);border-radius:10px;padding:10px 14px;font-size:.88rem}
+
+/* chat */
+.chat{display:flex;flex-direction:column;gap:0;padding:0;overflow:hidden}
+.chat-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line);background:var(--soft)}
+.who{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.92rem}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;font:800 .78rem var(--display)}
+.msgs{display:flex;flex-direction:column;gap:14px;padding:18px;min-height:220px;max-height:520px;overflow-y:auto}
+.msg{display:flex;flex-direction:column;gap:3px;max-width:88%;min-width:0}
+.msg.me{align-self:flex-end;align-items:flex-end}
+.msg small{font-size:.72rem;color:var(--muted);font-weight:600}
+.bubble{padding:10px 14px;border-radius:14px;overflow-wrap:anywhere;min-width:0}
+.msg.me .bubble{background:var(--accent);color:var(--accent-fg);border-bottom-right-radius:4px}
+.msg.ai .bubble{background:var(--soft);border:1px solid var(--line);border-bottom-left-radius:4px}
+.bubble p{margin:0 0 8px}.bubble p:last-child{margin:0}.bubble ul,.bubble ol{margin:0 0 8px;padding-left:1.2em}
+.chat-foot{border-top:1px solid var(--line);padding:14px 18px;display:flex;flex-direction:column;gap:12px}
+.sendrow{display:flex;gap:8px}.sendrow input{flex:1}
+
+/* faq */
+.faq{display:flex;flex-direction:column;gap:10px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:0}
+summary{font-weight:600;cursor:pointer;padding:14px 18px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:600 1.25rem var(--body);color:var(--accent-ink);flex:0 0 auto}
+details[open] summary::after{content:"\2212"}
+details p{margin:0;padding:0 18px 16px;color:var(--muted)}
+
+footer{margin-top:18px;border-top:1px solid var(--line);padding-block:20px 36px;color:var(--muted);font-size:.82rem}
+footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px}
+</style>
+
+<header class="band">
+  <div class="inner">
+    <div class="logo">
+      <div class="mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 12v4.5c0 1 2.2 2.5 5 2.5s5-1.5 5-2.5V12"/></svg>
+      </div>
+      <div>
+        <p class="brand">StudyPath</p>
+        <p class="brand-sub">Learning and career support for students</p>
+      </div>
+    </div>
+    <h1 class="hero-title">Understand your homework. Plan your future.</h1>
+    <p class="hero-sub">Get step-by-step explanations, personalised career paths and a mentor who answers any time, all in one place.</p>
+    <ul class="points">
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Worked solutions, not just answers</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Career roadmaps with first steps</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Mentor chat for study and exam advice</li>
+    </ul>
+  </div>
+</header>
+
+<div class="inner">
+  <div class="shell">
+    <nav class="nav" role="tablist" aria-label="Sections">
+      <button role="tab" id="t-ask" aria-selected="true" aria-controls="p-ask">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg>Get answers</button>
+      <button role="tab" id="t-career" aria-selected="false" aria-controls="p-career">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg>Career guide</button>
+      <button role="tab" id="t-chat" aria-selected="false" aria-controls="p-chat">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>Mentor chat</button>
+      <button role="tab" id="t-faq" aria-selected="false" aria-controls="p-faq">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16M4 12h16M4 19h10"/></svg>Quick FAQ</button>
+    </nav>
+
+    <main class="main">
+      <div id="aiBanner" class="banner" hidden></div>
+
+      <!-- GET ANSWERS -->
+      <section class="panel" id="p-ask" role="tabpanel" aria-labelledby="t-ask">
+        <div class="panel-head">
+          <h2>Get answers</h2>
+          <p>Ask any school or college question. You get the method and the working, so you can solve the next one yourself.</p>
+        </div>
+        <form class="card" id="askForm">
+          <div class="row">
+            <label>Subject
+              <select id="subject">
+                <option>Maths</option><option>Science</option><option>English</option><option>Social Studies</option>
+                <option>Computer Science</option><option>Commerce and Accounts</option><option>Other</option>
+              </select>
+            </label>
+            <label>Level of explanation
+              <select id="depth">
+                <option value="very simply, as if to a beginner">Beginner</option>
+                <option value="clearly, at school-exam level" selected>Exam level</option>
+                <option value="in depth, with reasoning and edge cases">In depth</option>
+              </select>
+            </label>
+          </div>
+          <label>Your question
+            <textarea id="question" maxlength="1500" placeholder="Example: Solve x^2 - 5x + 6 = 0 and explain each step."></textarea>
+            <span class="hint" id="count">0 / 1500</span>
+          </label>
+          <div class="lbl">Try an example
+            <div class="chips" id="examples"></div>
+          </div>
+          <div class="actions"><button class="btn" id="askBtn" type="submit">Explain it</button></div>
+        </form>
+        <div class="out" id="askOut" hidden aria-live="polite">
+          <div class="out-head"><span class="out-title">Explanation</span><button class="mini" id="askCopy" type="button">Copy</button></div>
+          <div class="out-body" id="askBody"></div>
+        </div>
+        <div class="actions" id="askMore" hidden>
+          <button class="btn ghost" id="practiceBtn" type="button">Give me 3 practice questions</button>
+        </div>
+        <div class="out" id="practiceOut" hidden aria-live="polite">
+          <div class="out-head"><span class="out-title">Practice</span></div>
+          <div class="out-body" id="practiceBody"></div>
+        </div>
+        <p class="note">AI can make mistakes. Check important answers against your textbook or teacher.</p>
+      </section>
+
+      <!-- CAREER GUIDE -->
+      <section class="panel" id="p-career" role="tabpanel" aria-labelledby="t-career" hidden>
+        <div class="panel-head">
+          <h2>Career guide</h2>
+          <p>Tell us what you enjoy and where you are now. You get three paths that fit, each with a step-by-step route and a 30-day plan.</p>
+        </div>
+        <form class="card" id="careerForm">
+          <div class="row">
+            <label>Current stage
+              <select id="stage">
+                <option>Class 8 to 10</option><option selected>Class 11 to 12</option><option>College (undergraduate)</option><option>Graduate or job seeker</option>
+              </select>
+            </label>
+            <label>Stream or degree <span class="hint">Optional</span>
+              <input id="stream" placeholder="Science, Commerce, Arts, B.Com, BCA...">
+            </label>
+          </div>
+          <div class="lbl">What do you enjoy? <span class="hint">Pick any</span>
+            <div class="chips" id="interests"></div>
+          </div>
+          <label>Favourite subjects and strengths
+            <textarea id="strengths" placeholder="Example: I like maths and drawing. Friends say I explain things well."></textarea>
+          </label>
+          <label>Worries or limits <span class="hint">Optional</span>
+            <input id="limits" placeholder="Budget, location, family expectations, low marks...">
+          </label>
+          <div class="actions"><button class="btn" id="careerBtn" type="submit">Build my career plan</button></div>
+        </form>
+        <div id="careerOut" aria-live="polite"></div>
+        <p class="note">This is a starting point. Talk to a school counsellor, teachers and people working in the field before you decide.</p>
+      </section>
+
+      <!-- MENTOR CHAT -->
+      <section class="panel" id="p-chat" role="tabpanel" aria-labelledby="t-chat" hidden>
+        <div class="panel-head">
+          <h2>Mentor chat</h2>
+          <p>Ask about study plans, exams, skills, college choices or handling stress before tests.</p>
+        </div>
+        <div class="card chat">
+          <div class="chat-head">
+            <div class="who"><span class="avatar" aria-hidden="true">SP</span>StudyPath Mentor</div>
+            <button class="mini" id="chatClear" type="button">New chat</button>
+          </div>
+          <div class="msgs" id="msgs" aria-live="polite"></div>
+          <div class="chat-foot">
+            <div class="chips" id="starters"></div>
+            <form class="sendrow" id="chatForm">
+              <input id="chatInput" maxlength="800" placeholder="Type your question" aria-label="Message">
+              <button class="btn" id="chatBtn" type="submit">Send</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK FAQ -->
+      <section class="panel" id="p-faq" role="tabpanel" aria-labelledby="t-faq" hidden>
+        <div class="panel-head">
+          <h2>Quick FAQ</h2>
+          <p>Short answers to questions students ask most. This section works without AI.</p>
+        </div>
+        <label>Search
+          <input id="faqSearch" type="search" placeholder="Try: stream, coding, resume, exams">
+        </label>
+        <div class="faq" id="faqList"></div>
+        <p class="note" id="faqEmpty" hidden>No match. Ask the Mentor chat for a custom answer.</p>
+      </section>
+    </main>
+  </div>
+</div>
+
+<footer>
+  <div class="inner">
+    <span>StudyPath. Guidance for students.</span>
+    <span>Answers are AI-generated. Verify exams, fees and dates with official sources.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var $ = function(id){return document.getElementById(id)};
+  function h(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
+
+  /* ---------- AI access ---------- */
+  /* Paste your Cloudflare Worker URL below (see worker.js). */
+  var WORKER_URL="https://misty-haze-20d3.prakashsapkale76.workers.dev";
+  function toContents(input){
+    if(typeof input==="string") input=[{role:"user",content:input}];
+    return input.map(function(m){return {role:m.role==="assistant"?"model":"user",parts:[{text:m.content}]}});
+  }
+  function callGemini(input,opts,json){
+    return fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:toContents(input),json:!!json})})
+    .then(function(r){
+      if(r.status===429) throw {code:"rate_limited"};
+      if(!r.ok) throw {code:"error"};
+      return r.json();
+    }).then(function(d){
+      if(!d||typeof d.text!=="string"||!d.text) throw {code:"error"};
+      if(opts&&opts.onText) opts.onText({text:d.text});
+      return {text:d.text};
+    });
+  }
+  var gemini=function(input,opts){return callGemini(input,opts,false)};
+  gemini.json=function(input,opts){return callGemini(input,opts,true).then(function(r){return JSON.parse(r.text.replace(/```json|```/g,"").trim())})};
+  var samplePromise=Promise.resolve(WORKER_URL.indexOf("http")===0?gemini:null);
+  samplePromise.then(function(s){
+    if(!s){
+      var b=$("aiBanner"); b.hidden=false;
+      b.textContent="AI is not set up yet. The Quick FAQ still works.";
+    }
+  });
+  function errText(e){
+    if(e && e.code==="none") return "AI is not set up yet.";
+    if(e && e.code==="not_granted") return "AI access was not allowed. Reload the page and allow it to continue.";
+    if(e && e.code==="rate_limited") return "Too many requests. Wait a moment and try again.";
+    return "Something went wrong. Please try again.";
+  }
+  function busy(el,label){el.textContent="";var b=h("div","busy");b.appendChild(h("span","spin"));b.appendChild(h("span",null,label||"Working on it"));el.appendChild(b)}
+  function setBtn(btn,on,label){
+    if(on){btn.dataset.label=btn.textContent;btn.disabled=true;btn.textContent="";btn.appendChild(h("span","spin"));btn.appendChild(document.createTextNode(label||"Working"))}
+    else{btn.disabled=false;btn.textContent=btn.dataset.label||btn.textContent}
+  }
+  function copyText(text,btn){
+    var done=function(ok){var o=btn.textContent;btn.textContent=ok?"Copied":"Select and copy";setTimeout(function(){btn.textContent=o},1600)};
+    try{navigator.clipboard.writeText(text).then(function(){done(true)},function(){done(false)})}catch(e){done(false)}
+  }
+
+  /* ---------- tiny safe renderer ---------- */
+  function inline(parent,s){
+    s.split(/\*\*(.+?)\*\*/g).forEach(function(p,i){
+      if(!p) return;
+      if(i%2){parent.appendChild(h("strong",null,p))}
+      else parent.appendChild(document.createTextNode(p));
+    });
+  }
+  function render(el,text){
+    el.textContent=""; var list=null,type=null;
+    text.split("\n").forEach(function(raw){
+      var line=raw.trimEnd(),m;
+      if(!line.trim()){list=null;return}
+      if((m=line.match(/^#{1,4}\s+(.*)/))){list=null;var hh=h("h4");inline(hh,m[1]);el.appendChild(hh)}
+      else if((m=line.match(/^\s*[-*]\s+(.*)/))){
+        if(type!=="ul"||!list){list=h("ul");type="ul";el.appendChild(list)}
+        var li=h("li");inline(li,m[1]);list.appendChild(li)}
+      else if((m=line.match(/^\s*\d+[.)]\s+(.*)/))){
+        if(type!=="ol"||!list){list=h("ol");type="ol";el.appendChild(list)}
+        var li2=h("li");inline(li2,m[1]);list.appendChild(li2)}
+      else{list=null;var p=h("p");inline(p,line);el.appendChild(p)}
+    });
+  }
+  function ask(prompt,box,body,label){
+    return samplePromise.then(function(sample){
+      if(!sample) throw {code:"none"};
+      box.hidden=false; body.classList.remove("err"); busy(body,label);
+      var first=true;
+      return sample(prompt,{cache:false,onText:function(r){if(r.text){render(body,r.text)}}});
+    });
+  }
+
+  /* ---------- tabs ---------- */
+  var tabs=["ask","career","chat","faq"];
+  tabs.forEach(function(n){
+    $("t-"+n).addEventListener("click",function(){
+      tabs.forEach(function(k){
+        $("t-"+k).setAttribute("aria-selected",k===n?"true":"false");
+        $("p-"+k).hidden = k!==n;
+      });
+    });
+  });
+
+  /* ---------- get answers ---------- */
+  var lastQ="",lastA="";
+  var examples=["Solve x^2 - 5x + 6 = 0","Explain photosynthesis in simple steps","What is the difference between a noun and a pronoun?","Why does the Earth have seasons?"];
+  var eb=$("examples");
+  examples.forEach(function(t){
+    var c=h("button","chip",t);c.type="button";
+    c.addEventListener("click",function(){$("question").value=t;$("count").textContent=t.length+" / 1500";$("question").focus()});
+    eb.appendChild(c);
+  });
+  $("question").addEventListener("input",function(){$("count").textContent=this.value.length+" / 1500"});
+  $("askForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var q=$("question").value.trim(); if(!q) return;
+    var btn=$("askBtn"); setBtn(btn,true,"Explaining"); $("askMore").hidden=true; $("practiceOut").hidden=true;
+    var prompt="You are a patient tutor for a student. Subject: "+$("subject").value+". Explain "+$("depth").value+
+      ". Show the working step by step in plain language, then finish with one line starting 'Remember:' that gives the key idea. "+
+      "If the question is unclear, state your assumption first. If you are not sure, say so. "+
+      "Write maths in plain text (for example x^2 + 3x = 0), no LaTeX. Use short paragraphs and simple lists.\n\nStudent question:\n"+q;
+    ask(prompt,$("askOut"),$("askBody"),"Working out the answer").then(function(r){
+      lastQ=q; lastA=r.text; render($("askBody"),r.text); $("askMore").hidden=false;
+    }).catch(function(err){
+      var b=$("askBody"); $("askOut").hidden=false; b.textContent=errText(err); b.classList.add("err");
+    }).then(function(){setBtn(btn,false)});
+  });
+  $("askCopy").addEventListener("click",function(){copyText(lastA,this)});
+  $("practiceBtn").addEventListener("click",function(){
+    var btn=$("practiceBtn"); setBtn(btn,true,"Preparing");
+    var msgs=[
+      {role:"user",content:"You are a patient tutor. Student question:\n"+lastQ},
+      {role:"assistant",content:lastA},
+      {role:"user",content:"Give me 3 similar practice questions, easy to harder. Do not include the answers. After them, add a line 'Answers:' followed by the final answers only, in one line each, so I can check myself."}
+    ];
+    ask(msgs,$("practiceOut"),$("practiceBody"),"Writing practice questions").then(function(r){render($("practiceBody"),r.text)})
+    .catch(function(err){var b=$("practiceBody");$("practiceOut").hidden=false;b.textContent=errText(err);b.classList.add("err")})
+    .then(function(){setBtn(btn,false)});
+  });
+
+  /* ---------- career guide ---------- */
+  var interestList=["Building things","Computers and coding","Biology and health","Numbers and money","Art and design","Writing and media","Teaching others","Law and debate","Sports and fitness","Nature and animals","Business and selling","Helping people"];
+  var picked={};
+  var ib=$("interests");
+  interestList.forEach(function(t){
+    var c=h("button","chip",t);c.type="button";c.setAttribute("aria-pressed","false");
+    c.addEventListener("click",function(){picked[t]=!picked[t];c.setAttribute("aria-pressed",picked[t]?"true":"false")});
+    ib.appendChild(c);
+  });
+  function addList(parent,title,items,ordered){
+    if(!items||!items.length) return;
+    var box=h("div");box.appendChild(h("h5",null,title));
+    var l=h(ordered?"ol":"ul");
+    items.forEach(function(x){l.appendChild(h("li",null,String(x)))});
+    box.appendChild(l);parent.appendChild(box);
+  }
+  function pillClass(f){f=(f||"").toLowerCase();return f.indexOf("stretch")>-1?"pill stretch":f.indexOf("good")>-1?"pill good":"pill"}
+  $("careerForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var out=$("careerOut");
+    var chosen=interestList.filter(function(t){return picked[t]});
+    var strengths=$("strengths").value.trim();
+    if(!chosen.length && !strengths){
+      out.textContent="";var m=h("div","banner","Pick at least one interest or describe what you are good at.");out.appendChild(m);return;
+    }
+    var btn=$("careerBtn");setBtn(btn,true,"Building your plan");
+    out.textContent="";var wait=h("div","card");busy(wait,"Matching your profile to careers");out.appendChild(wait);
+    var prompt="You are a careful career counsellor for students in India, but keep advice useful anywhere. "+
+      "Student stage: "+$("stage").value+". Stream or degree: "+($("stream").value||"not given")+
+      ". Interests: "+(chosen.join(", ")||"not given")+". Strengths and favourite subjects: "+(strengths||"not given")+
+      ". Worries or limits: "+($("limits").value||"none given")+".\n"+
+      "Suggest exactly 3 different, realistic career paths that fit. Be honest about difficulty and do not promise salaries or guaranteed jobs. "+
+      "Return ONLY JSON in this shape: {\"summary\":\"2 sentences on what stands out about this student\","+
+      "\"careers\":[{\"title\":\"\",\"fit\":\"Strong fit or Good fit or Stretch\",\"why_it_fits\":\"1-2 sentences\",\"skills\":[\"4 to 6 short skills\"],"+
+      "\"path\":[\"4 to 6 ordered steps from now to first job, specific to the stage\"],"+
+      "\"exams_or_courses\":[\"real exams, degrees or courses that apply, if any\"],\"reality_check\":\"1 honest sentence about the hard part\"}],"+
+      "\"next_30_days\":[\"4 small actions the student can do this month\"]}";
+    samplePromise.then(function(sample){
+      if(!sample) throw {code:"none"};
+      return sample.json(prompt,{cache:false});
+    }).then(function(data){
+      out.textContent="";
+      if(data.summary){var sc=h("div","card");sc.appendChild(h("p","summary",data.summary));out.appendChild(sc)}
+      var wrap=h("div","careers");wrap.style.marginTop="16px";
+      (data.careers||[]).forEach(function(c){
+        var card=h("article","career");
+        var top=h("div","career-top");top.appendChild(h("h3",null,c.title||"Career path"));
+        if(c.fit)top.appendChild(h("span",pillClass(c.fit),c.fit));
+        card.appendChild(top);
+        card.appendChild(h("p",null,c.why_it_fits||""));
+        if(c.skills&&c.skills.length){
+          var sk=h("div","skills");c.skills.forEach(function(s){sk.appendChild(h("span",null,String(s)))});card.appendChild(sk);
+        }
+        var cols=h("div","cols");
+        addList(cols,"Your path",c.path,true);
+        addList(cols,"Exams and courses",c.exams_or_courses,false);
+        card.appendChild(cols);
+        if(c.reality_check)card.appendChild(h("p","reality","Reality check: "+c.reality_check));
+        wrap.appendChild(card);
+      });
+      out.appendChild(wrap);
+      if(data.next_30_days&&data.next_30_days.length){
+        var n=h("div","career");n.style.marginTop="16px";
+        n.appendChild(h("h3",null,"Your next 30 days"));
+        addList(n,"Start with these",data.next_30_days,true);out.appendChild(n);
+      }
+    }).catch(function(err){
+      out.textContent="";out.appendChild(h("div","banner",errText(err)));
+    }).then(function(){setBtn(btn,false)});
+  });
+
+  /* ---------- mentor chat ---------- */
+  var history=[];
+  var starters=["How do I make a study timetable?","How do I beat exam stress?","Is coding a good career?","Science or commerce?"];
+  var sb=$("starters");
+  starters.forEach(function(t){
+    var c=h("button","chip",t);c.type="button";
+    c.addEventListener("click",function(){$("chatInput").value=t;$("chatForm").requestSubmit()});
+    sb.appendChild(c);
+  });
+  var INSTR="You are StudyPath Mentor, a warm, practical guide for school and college students. Give clear, honest, concise advice (under 180 words unless asked for more). Use simple language and short lists. Never invent facts about exams, fees or cut-offs; say when something should be checked with the official source or a counsellor. If a student sounds very stressed or unsafe, be kind and suggest talking to a trusted adult or a helpline.\n\n";
+  function addMsg(cls,label){
+    var d=h("div","msg "+cls);d.appendChild(h("small",null,label));
+    var b=h("div","bubble");d.appendChild(b);$("msgs").appendChild(d);return b;
+  }
+  function welcome(){
+    var b=addMsg("ai","Mentor");
+    b.textContent="Hi, I'm your StudyPath mentor. Ask me about study plans, exams, choosing a stream or course, or building skills for a career.";
+  }
+  welcome();
+  $("chatClear").addEventListener("click",function(){history=[];$("msgs").textContent="";welcome()});
+  $("chatForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var t=$("chatInput").value.trim();if(!t) return;
+    $("chatInput").value="";
+    history.push({role:"user",content:t});
+    addMsg("me","You").textContent=t;
+    var ai=addMsg("ai","Mentor");busy(ai,"Thinking");
+    var btn=$("chatBtn");btn.disabled=true;
+    var recent=history.slice(-12);
+    while(recent.length&&recent[0].role!=="user") recent.shift();
+    var payload=recent.map(function(m,i){return i===0?{role:m.role,content:INSTR+m.content}:m});
+    samplePromise.then(function(sample){
+      if(!sample) throw {code:"none"};
+      return sample(payload,{cache:false,onText:function(r){if(r.text)render(ai,r.text)}});
+    }).then(function(r){
+      render(ai,r.text);history.push({role:"assistant",content:r.text});
+    }).catch(function(err){
+      history.pop();ai.textContent=errText(err);
+    }).then(function(){btn.disabled=false;var m=$("msgs");m.scrollTop=m.scrollHeight});
+  });
+
+  /* ---------- quick FAQ ---------- */
+  var faq=[
+    ["How do I choose a stream after Class 10?","Start from what you enjoy and do well in, not from what friends pick. Science (PCM or PCB) keeps engineering, medicine and research open. Commerce leads to accounting, finance, business and law. Arts and humanities lead to law, design, media, civil services and teaching. Check the subjects you would study for two years and whether you can handle them, then talk to a counsellor.","stream class 10 science commerce arts"],
+    ["What can I do after Class 12 Commerce?","Common routes are B.Com, BBA, CA, CMA, CS, economics, law (through CLAT or CUET-based entry) and BCA if you like computers. Pick based on whether you prefer numbers, management or the legal side.","commerce 12th after options"],
+    ["How do I start learning to code?","Pick one language (Python or JavaScript), learn the basics for 3 to 4 weeks, then build small projects: a calculator, a todo list, a quiz. Practise a little every day. Free sites like freeCodeCamp and the official docs are enough to begin.","coding programming start learn python"],
+    ["What is the difference between B.Tech, B.Sc and BCA?","B.Tech is a 4-year engineering degree. B.Sc is a 3-year science degree with more theory and research focus. BCA is a 3-year computer applications degree, lighter on maths and electronics than engineering. All can lead to software jobs; B.Tech has the widest campus recruitment.","btech bsc bca degree difference"],
+    ["How can I study effectively?","Test yourself instead of rereading: close the book and write what you remember. Space your revision over days. Study in 25 to 40 minute blocks with short breaks. Solve past papers. Sleep properly before exams.","study tips revision memory exams"],
+    ["How do I prepare for boards and a competitive exam together?","Treat the board syllabus as the base, since most entrance exams build on it. Make a weekly plan with fixed hours for each, finish chapters in the board order, then practise entrance-style questions on the same topics. Keep one day a week for revision and mock tests.","boards competitive exam jee neet cuet preparation"],
+    ["What should a fresher put on a resume?","Keep it to one page: name and contact, a two-line objective, education, projects, skills, internships, and achievements. Use simple formatting, real numbers where you have them (for example 'built a quiz app used by 40 classmates'), and no false claims.","resume cv fresher job"],
+    ["Is a gap year a bad idea?","Not by itself. It helps when you use it for focused exam preparation, a skill or real work experience, and you can explain it clearly. It hurts when it has no plan. Decide the goal and the date you will end it.","gap year drop"],
+    ["How do I handle exam stress?","Break the syllabus into small daily targets, sleep 7 to 8 hours, take short walks, and avoid comparing marks with others. If worry stays heavy for days or affects eating and sleeping, speak to a parent, teacher or school counsellor.","stress anxiety exam fear"]
+  ];
+  var fl=$("faqList");
+  faq.forEach(function(f){
+    var d=h("details");d.dataset.k=(f[0]+" "+f[2]).toLowerCase();
+    d.appendChild(h("summary",null,f[0]));d.appendChild(h("p",null,f[1]));fl.appendChild(d);
+  });
+  $("faqSearch").addEventListener("input",function(){
+    var q=this.value.trim().toLowerCase(),shown=0;
+    fl.querySelectorAll("details").forEach(function(d){
+      var ok=!q||q.split(/\s+/).every(function(w){return d.dataset.k.indexOf(w)>-1});
+      d.hidden=!ok;if(ok)shown++;
+    });
+    $("faqEmpty").hidden=shown>0;
+  });
+})();
+</script>
+
+</body></html>
