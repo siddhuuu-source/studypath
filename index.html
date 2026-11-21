@@ -464,7 +464,36 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
   function h(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
 
   /* ---------- AI access ---------- */
-  var samplePromise = (window.claude && window.claude.use) ? window.claude.use("sample") : Promise.resolve(null);
+  var AI_URL = "https://misty-haze-20d3.prakashsapkale76.workers.dev";
+  function callAI(messages, wantJson) {
+    return fetch(AI_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ messages: messages, json: !!wantJson })
+    }).then(function (r) {
+      if (r.status === 429) throw { code: "rate_limited" };
+      if (!r.ok) throw { code: "fail" };
+      return r.json();
+    }).then(function (d) {
+      if (!d.text) throw { code: "fail" };
+      return d.text;
+    });
+  }
+  function toMsgs(p) { return typeof p === "string" ? [{ role: "user", content: p }] : p; }
+  var sample = function (p, opts) {
+    return callAI(toMsgs(p), false).then(function (t) {
+      if (opts && opts.onText) opts.onText({ text: t });
+      return { text: t };
+    });
+  };
+  sample.json = function (p) {
+    return callAI(toMsgs(p), true).then(function (t) {
+      t = t.replace(/^```(?:json)?\s*|\s*```$/g, "").trim();
+      return JSON.parse(t);
+    });
+  };
+  sample.limits = function () { return { images: false }; };
+  var samplePromise = Promise.resolve(sample);
   samplePromise.then(function(s){
     if(!s){
       var b=$("aiBanner"); b.hidden=false;
