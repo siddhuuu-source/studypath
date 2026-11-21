@@ -317,7 +317,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
             <label>Subject
               <select id="examSubject">
                 <option>Physics</option><option>Chemistry</option><option>Maths</option><option>Biology</option><option>English</option><option>General Test</option><option>Accountancy</option><option>Economics</option><option>Business Studies</option><option>Computer Science</option>
-              </select>
+           </select>
             </label>
           </div>
           <div class="row">
@@ -425,7 +425,37 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     <span>Answers are AI-generated. Verify exams, fees and dates with official sources.</span>
   </div>
 </footer>
+<script>
+(function () {
+  const examEl = document.getElementById("examName");
+  const subjectEl = document.getElementById("examSubject");
+  if (!examEl || !subjectEl) return;
 
+  const allSubjects = Array.from(subjectEl.options).map(o => o.text);
+
+  const allowed = {
+    "NEET": ["Physics", "Chemistry", "Biology"],
+    "JEE Main": ["Physics", "Chemistry", "Maths"],
+    "JEE Advanced": ["Physics", "Chemistry", "Maths"],
+    "State CET (KCET, MHT-CET and similar)": ["Physics", "Chemistry", "Maths", "Biology"]
+  };
+
+  function updateSubjects() {
+    const list = allowed[examEl.value] || allSubjects;
+    const previous = subjectEl.value;
+    subjectEl.innerHTML = "";
+    list.forEach(name => {
+      const opt = document.createElement("option");
+      opt.textContent = name;
+      subjectEl.appendChild(opt);
+    });
+    if (list.includes(previous)) subjectEl.value = previous;
+  }
+
+  examEl.addEventListener("change", updateSubjects);
+  updateSubjects();
+})();
+</script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script>
