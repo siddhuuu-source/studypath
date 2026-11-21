@@ -1,4 +1,23 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><title>StudyPath by Siddhant - Free homework help, career guide and study mentor</title><meta name="description" content="StudyPath by Siddhant is a free tool for school and college students: snap a photo of a problem for step-by-step help, get a personalised career plan, chat with a study mentor and read a quick FAQ."><link rel="canonical" href="https://siddhuuu-source.github.io/studypath/"><meta property="og:type" content="website"><meta property="og:title" content="StudyPath by Siddhant"><meta property="og:description" content="Free homework help, career guide and study mentor for students."><meta property="og:url" content="https://siddhuuu-source.github.io/studypath/"><link rel="manifest" href="manifest.json"><meta name="theme-color" content="#14244A"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="StudyPath"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"StudyPath by Siddhant","url":"https://siddhuuu-source.github.io/studypath/","description":"Free homework help with photo solving, personalised career guide, study mentor chat and student FAQ.","applicationCategory":"EducationalApplication","operatingSystem":"Any","inLanguage":"en","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Siddhant"}}</script><meta name="google-site-verification" content="PASTE_GOOGLE_CODE_HERE"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>StudyPath by Siddhant - Free Homework Help and Career Guidance for Students</title>
+<meta name="description" content="StudyPath by Siddhant helps students with step-by-step homework explanations, NEET, JEE and CUET practice questions, career guidance, study tips and answers to common questions about streams, exams and courses.">
+<link rel="canonical" href="https://siddhuuu-source.github.io/studypath/">
+<meta name="theme-color" content="#14244A">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="logo-stacked.png">
+<link rel="apple-touch-icon" href="logo-stacked.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="StudyPath">
+<meta property="og:type" content="website">
+<meta property="og:title" content="StudyPath by Siddhant - Free Homework Help and Career Guidance for Students">
+<meta property="og:description" content="Step-by-step homework explanations, career guidance and study tips for students.">
+<meta property="og:url" content="https://siddhuuu-source.github.io/studypath/">
+<meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600;700;800&family=Inter:wght@400;500;600&display=swap">
 <style>
 /* Layout: navy brand band on top, sidebar navigation beside a content column, neutral cards with one teal action colour */
@@ -35,7 +54,7 @@ body{background:var(--bg);color:var(--fg);font:15.5px/1.6 var(--body);margin:0;p
 .band{background:var(--band);color:var(--band-fg);margin-top:calc(-1*env(safe-area-inset-top,0px));padding-top:calc(env(safe-area-inset-top,0px) + 22px);padding-bottom:26px}
 .band .inner{display:flex;flex-direction:column;gap:16px}
 .logo{display:flex;align-items:center;gap:12px}
-.mark{width:44px;height:44px;display:block;flex:0 0 auto}.mark svg{display:block;width:44px;height:44px}
+.mark{width:40px;height:40px;border-radius:10px;background:var(--accent);color:var(--accent-fg);display:grid;place-items:center;flex:0 0 auto}
 .brand{font:800 1.45rem/1 var(--display);letter-spacing:-.02em;margin:0}
 .brand-sub{margin:2px 0 0;font-size:.82rem;color:var(--band-muted)}
 .hero-title{font:800 clamp(1.5rem,4vw,2.1rem)/1.15 var(--display);letter-spacing:-.02em;margin:0;max-width:640px;text-wrap:balance}
@@ -57,7 +76,7 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
 
 .main{min-width:0;display:flex;flex-direction:column;gap:18px}
 .panel{display:flex;flex-direction:column;gap:18px;min-width:0}
-.panel{scroll-margin-top:24px}.panel+.panel{margin-top:30px;padding-top:30px;border-top:1px solid var(--line)}@media(max-width:859px){.nav{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0}.panel{scroll-margin-top:70px}}
+.panel[hidden]{display:none}
 .panel-head h2{font:800 1.45rem/1.2 var(--display);letter-spacing:-.015em;margin:0 0 4px}
 .panel-head p{margin:0;color:var(--muted)}
 
@@ -131,7 +150,7 @@ textarea{resize:vertical;min-height:110px}
 .msg.ai .bubble{background:var(--soft);border:1px solid var(--line);border-bottom-left-radius:4px}
 .bubble p{margin:0 0 8px}.bubble p:last-child{margin:0}.bubble ul,.bubble ol{margin:0 0 8px;padding-left:1.2em}
 .chat-foot{border-top:1px solid var(--line);padding:14px 18px;display:flex;flex-direction:column;gap:12px}
-.photo-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}.thumb{display:flex;align-items:center;gap:12px;margin:8px 0}.thumb[hidden]{display:none}.thumb img{max-height:90px;max-width:140px;border-radius:10px;border:1px solid var(--line)}.bubble img.snap{display:block;max-height:140px;max-width:100%;border-radius:10px;margin-bottom:6px}.sendrow{display:flex;gap:8px}.sendrow input{flex:1}
+.sendrow{display:flex;gap:8px}.sendrow input{flex:1}
 
 /* faq */
 .faq{display:flex;flex-direction:column;gap:10px}
@@ -144,21 +163,53 @@ details p{margin:0;padding:0 18px 16px;color:var(--muted)}
 
 footer{margin-top:18px;border-top:1px solid var(--line);padding-block:20px 36px;color:var(--muted);font-size:.82rem}
 footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 24px}
-</style>
 
+[hidden]{display:none!important}
+.about{padding-block:8px 8px}
+.about h2{font:800 1.35rem/1.2 var(--display);letter-spacing:-.015em;margin:0 0 10px}
+.about-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.about-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px;min-width:0}
+.about-card h3{font:700 1.02rem var(--display);margin:0 0 6px}
+.about-card p{margin:0;color:var(--muted);font-size:.92rem}
+.credit a{color:var(--accent-ink)}
+
+.qtext{margin:0;font-weight:600}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;font:400 .95rem var(--body);color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt b{flex:0 0 auto;min-width:1.4em}
+.opt.right{background:var(--ok-bg);border-color:var(--ok-fg);color:var(--ok-fg)}
+.opt.wrong{border-color:var(--danger);color:var(--danger)}
+.expl{background:var(--soft);border-radius:10px;padding:10px 14px;font-size:.9rem}
+.score{margin:0;font:800 1.1rem var(--display)}
+.opts{display:flex;flex-direction:column;gap:8px}
+.logo{flex-wrap:wrap}
+.userbox{margin-left:auto;display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--band-muted);min-width:0}
+.userbox[hidden]{display:none}
+.userbox span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:180px}
+.userbox .mini{background:transparent;color:var(--band-fg);border-color:var(--band-line)}
+.authh{font:800 1.3rem/1.2 var(--display);margin:0;letter-spacing:-.01em}
+.card a,.note a{color:var(--accent-ink)}
+</style>
+</head>
+<body>
 <header class="band">
   <div class="inner">
     <div class="logo">
-      <div class="mark" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="44" height="44"><rect width="512" height="512" rx="112" fill="#4F46E5"/><g transform="translate(-8 26)"><path d="M158 262 L256 308 L354 262 L354 330 C354 376 158 376 158 330 Z" fill="#C7D2FE"/><polygon points="256.0,140.0 430.0,220.0 256.0,300.0 82.0,220.0" fill="#FFFFFF"/><line x1="430" y1="220" x2="430" y2="322" stroke="#FBBF24" stroke-width="12" stroke-linecap="round"/><circle cx="430" cy="340" r="22" fill="#FBBF24"/><polygon points="266.0,76.0 274.2,98.7 298.3,99.5 279.3,114.3 286.0,137.5 266.0,124.0 246.0,137.5 252.7,114.3 233.7,99.5 257.8,98.7" fill="#FBBF24"/></g></svg></div>
+      <div class="mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 12v4.5c0 1 2.2 2.5 5 2.5s5-1.5 5-2.5V12"/></svg>
+      </div>
       <div>
         <p class="brand">StudyPath</p>
-        <p class="brand-sub">by Siddhant - Learning and career support for students</p>
+        <p class="brand-sub">by Siddhant. Learning and career support for students</p>
       </div>
+      <div class="userbox" id="userBox" hidden><span id="userName"></span><button class="mini" id="logoutBtn" type="button">Log out</button></div>
     </div>
     <h1 class="hero-title">Understand your homework. Plan your future.</h1>
-    <p class="hero-sub">Get step-by-step explanations, personalised career paths and a mentor who answers any time, all in one place.</p>
+    <p class="hero-sub">Get step-by-step explanations, NEET, JEE and CUET practice questions, personalised career paths and a mentor who answers any time.</p>
     <ul class="points">
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Worked solutions, not just answers</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>NEET, JEE and CUET practice</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Career roadmaps with first steps</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>Mentor chat for study and exam advice</li>
     </ul>
@@ -170,6 +221,8 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     <nav class="nav" role="tablist" aria-label="Sections">
       <button role="tab" id="t-ask" aria-selected="true" aria-controls="p-ask">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1 .9-1 1.7"/><path d="M12 17h.01"/></svg>Get answers</button>
+      <button role="tab" id="t-exam" aria-selected="false" aria-controls="p-exam">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>Exam prep</button>
       <button role="tab" id="t-career" aria-selected="false" aria-controls="p-career">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg>Career guide</button>
       <button role="tab" id="t-chat" aria-selected="false" aria-controls="p-chat">
@@ -181,8 +234,16 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     <main class="main">
       <div id="aiBanner" class="banner" hidden></div>
 
+      <div class="card" id="authCard" hidden>
+        <h2 class="authh">Sign in to start learning</h2>
+        <p style="margin:0;color:var(--muted)">Create your free StudyPath account in one tap. Then you can get answers, practise for NEET, JEE and CUET, plan your career and chat with the mentor. The Quick FAQ stays open to everyone.</p>
+        <div class="actions"><button class="btn" id="googleBtn" type="button">Continue with Google</button></div>
+        <p class="note" id="authMsg" role="status"></p>
+        <p class="note">By continuing you agree to the <a href="privacy.html">Privacy Policy</a>.</p>
+      </div>
+
       <!-- GET ANSWERS -->
-      <section class="panel" id="p-ask" role="region" aria-labelledby="t-ask">
+      <section class="panel" id="p-ask" role="tabpanel" aria-labelledby="t-ask">
         <div class="panel-head">
           <h2>Get answers</h2>
           <p>Ask any school or college question. You get the method and the working, so you can solve the next one yourself.</p>
@@ -191,7 +252,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
           <div class="row">
             <label>Subject
               <select id="subject">
-                <option>Maths</option><option>Science</option><option>English</option><option>Social Studies</option>
+                <option>Maths</option><option>Science</option><option>Physics</option><option>Chemistry</option><option>Biology</option><option>English</option><option>Social Studies</option>
                 <option>Computer Science</option><option>Commerce and Accounts</option><option>Other</option>
               </select>
             </label>
@@ -202,20 +263,24 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
                 <option value="in depth, with reasoning and edge cases">In depth</option>
               </select>
             </label>
+            <label>Exam focus
+              <select id="examFocus">
+                <option value="">General school study</option>
+                <option>NEET</option><option>JEE Main</option><option>JEE Advanced</option><option>CUET</option><option>State CET</option>
+              </select>
+            </label>
           </div>
           <label>Your question
             <textarea id="question" maxlength="1500" placeholder="Example: Solve x^2 - 5x + 6 = 0 and explain each step."></textarea>
             <span class="hint" id="count">0 / 1500</span>
           </label>
-          <div class="lbl">Snap the problem (optional)
-            <div class="photo-row">
-              <button class="chip" type="button" id="askCam">Take photo</button>
-              <button class="chip" type="button" id="askUp">Upload image</button>
-              <input type="file" id="askFileCam" accept="image/*" capture="environment" hidden>
-              <input type="file" id="askFile" accept="image/*" hidden>
+          <div class="lbl">Or take a photo of the question
+            <div class="actions">
+              <button class="btn ghost" id="photoBtn" type="button">Take or choose photo</button>
+              <input id="photo" type="file" accept="image/*" capture="environment" hidden>
+              <button class="mini" id="photoClear" type="button" hidden>Remove photo</button>
             </div>
-            <div class="thumb" id="askThumb" hidden><img id="askThumbImg" alt="Your photo"><button class="mini" type="button" id="askThumbX">Remove</button></div>
-            <span class="hint">The photo is sent to Google's Gemini AI to read the problem. Do not include faces or personal details.</span>
+            <img id="photoPrev" alt="Photo of your question" hidden style="max-width:min(260px,100%);border-radius:10px;border:1px solid var(--line)">
           </div>
           <div class="lbl">Try an example
             <div class="chips" id="examples"></div>
@@ -236,8 +301,44 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
         <p class="note">AI can make mistakes. Check important answers against your textbook or teacher.</p>
       </section>
 
+      <!-- EXAM PREP -->
+      <section class="panel" id="p-exam" role="tabpanel" aria-labelledby="t-exam" hidden>
+        <div class="panel-head">
+          <h2>Exam prep</h2>
+          <p>Practice questions for NEET, JEE, CUET and state CETs. Answer each one and see the explanation straight away.</p>
+        </div>
+        <form class="card" id="examForm">
+          <div class="row">
+            <label>Exam
+              <select id="examName">
+                <option>NEET</option><option>JEE Main</option><option>JEE Advanced</option><option>CUET</option><option>State CET (KCET, MHT-CET and similar)</option>
+              </select>
+            </label>
+            <label>Subject
+              <select id="examSubject">
+                <option>Physics</option><option>Chemistry</option><option>Maths</option><option>Biology</option><option>English</option><option>General Test</option><option>Accountancy</option><option>Economics</option><option>Business Studies</option><option>Computer Science</option>
+              </select>
+            </label>
+          </div>
+          <div class="row">
+            <label>Topic <span class="hint">Optional</span>
+              <input id="examTopic" placeholder="Example: Laws of motion, Organic chemistry, Genetics">
+            </label>
+            <label>Difficulty
+              <select id="examLevel"><option>Easy</option><option selected>Medium</option><option>Hard</option></select>
+            </label>
+            <label>Questions
+              <select id="examCount"><option>5</option><option>10</option></select>
+            </label>
+          </div>
+          <div class="actions"><button class="btn" id="examBtn" type="submit">Start practice</button></div>
+        </form>
+        <div id="examOut" aria-live="polite"></div>
+        <p class="note">Questions are written by AI in the style of each exam. They are not real past papers and can contain mistakes. Check important answers with your textbook, teacher or official papers.</p>
+      </section>
+
       <!-- CAREER GUIDE -->
-      <section class="panel" id="p-career" role="region" aria-labelledby="t-career">
+      <section class="panel" id="p-career" role="tabpanel" aria-labelledby="t-career" hidden>
         <div class="panel-head">
           <h2>Career guide</h2>
           <p>Tell us what you enjoy and where you are now. You get three paths that fit, each with a step-by-step route and a 30-day plan.</p>
@@ -269,7 +370,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       </section>
 
       <!-- MENTOR CHAT -->
-      <section class="panel" id="p-chat" role="region" aria-labelledby="t-chat">
+      <section class="panel" id="p-chat" role="tabpanel" aria-labelledby="t-chat" hidden>
         <div class="panel-head">
           <h2>Mentor chat</h2>
           <p>Ask about study plans, exams, skills, college choices or handling stress before tests.</p>
@@ -282,10 +383,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
           <div class="msgs" id="msgs" aria-live="polite"></div>
           <div class="chat-foot">
             <div class="chips" id="starters"></div>
-            <div class="thumb" id="chatThumb" hidden><img id="chatThumbImg" alt="Your photo"><button class="mini" type="button" id="chatThumbX">Remove</button></div>
             <form class="sendrow" id="chatForm">
-              <button class="mini" type="button" id="chatCam" aria-label="Add a photo">Photo</button>
-              <input type="file" id="chatFile" accept="image/*" capture="environment" hidden>
               <input id="chatInput" maxlength="800" placeholder="Type your question" aria-label="Message">
               <button class="btn" id="chatBtn" type="submit">Send</button>
             </form>
@@ -294,7 +392,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       </section>
 
       <!-- QUICK FAQ -->
-      <section class="panel" id="p-faq" role="region" aria-labelledby="t-faq">
+      <section class="panel" id="p-faq" role="tabpanel" aria-labelledby="t-faq" hidden>
         <div class="panel-head">
           <h2>Quick FAQ</h2>
           <p>Short answers to questions students ask most. This section works without AI.</p>
@@ -305,101 +403,51 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
         <div class="faq" id="faqList"></div>
         <p class="note" id="faqEmpty" hidden>No match. Ask the Mentor chat for a custom answer.</p>
       </section>
-
-      <section class="panel" id="p-about" aria-labelledby="aboutH">
-        <div class="panel-head">
-          <h2 id="aboutH">About StudyPath</h2>
-          <p>StudyPath is a free guide for school and college students. Ask a homework question and get the method and working, not just the answer. Tell us your interests and get three realistic career paths with a 30-day plan. Chat with a mentor about study plans, exams and stress, or search the quick FAQ for common questions.</p>
-        </div>
-        <div class="photo-row" style="margin:0 0 14px"><a class="chip" id="shareBtn" href="https://wa.me/?text=StudyPath%20-%20free%20homework%20help%2C%20career%20guide%20and%20study%20mentor%20for%20students%3A%20https%3A%2F%2Fsiddhuuu-source.github.io%2Fstudypath%2F" target="_blank" rel="noopener">Share StudyPath with friends</a></div>
-        <p class="note">StudyPath uses AI and can make mistakes. Always check exams, fees and dates with official sources, and talk to a teacher or counsellor before big decisions.</p>
-      </section>
     </main>
   </div>
 </div>
 
+
+<section class="inner about" aria-labelledby="about-h">
+  <h2 id="about-h">About StudyPath by Siddhant</h2>
+  <div class="about-grid">
+    <div class="about-card"><h3>Homework help that teaches</h3><p>StudyPath explains maths, science, English, social studies, computer science and commerce questions step by step, so students learn the method and can solve the next problem on their own.</p></div>
+    <div class="about-card"><h3>Career guidance for students</h3><p>Students from Class 8 to college can describe their interests and strengths and see realistic career paths, the exams and courses involved, and a 30-day plan to get started.</p></div>
+    <div class="about-card"><h3>NEET, JEE and CUET practice</h3><p>Choose an exam, subject and topic to get multiple-choice practice questions with instant marking and explanations.</p></div>
+    <div class="about-card"><h3>Study tips and FAQs</h3><p>The Quick FAQ answers common questions: how to choose a stream after Class 10, what to do after Class 12 commerce, how to learn coding, how to revise well and how to handle exam stress.</p></div>
+  </div>
+  <p class="note credit" style="margin-top:14px">StudyPath was built by Siddhant. Source code on <a href="https://github.com/siddhuuu-source/studypath">GitHub</a>.</p>
+</section>
+
 <footer>
   <div class="inner">
-    <span>StudyPath. Guidance for students.</span>
+    <span>StudyPath by Siddhant. Guidance for students.</span>
     <span>Answers are AI-generated. Verify exams, fees and dates with official sources.</span>
   </div>
 </footer>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script>
 (function(){
   var $ = function(id){return document.getElementById(id)};
   function h(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e}
 
   /* ---------- AI access ---------- */
-  /* Paste your Cloudflare Worker URL below (see worker.js). */
-  var WORKER_URL="https://misty-haze-20d3.prakashsapkale76.workers.dev";
-  function toContents(input,image){
-    if(typeof input==="string") input=[{role:"user",content:input}];
-    var out=input.map(function(m){return {role:m.role==="assistant"?"model":"user",parts:[{text:m.content}]}});
-    var m=image&&/^data:(.+?);base64,(.*)$/.exec(image);
-    if(m&&out.length) out[out.length-1].parts.unshift({inlineData:{mimeType:m[1],data:m[2]}});
-    return out;
-  }
-  function wait(ms){return new Promise(function(r){setTimeout(r,ms)})}
-  function post(input,json,stream,image){
-    return fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({contents:toContents(input,image),json:!!json,stream:!!stream})});
-  }
-  function readStream(r,opts){
-    var reader=r.body.getReader(),dec=new TextDecoder(),buf="",acc="";
-    function pump(){
-      return reader.read().then(function(x){
-        if(x.done){ if(!acc) throw {code:"error"}; return {text:acc}; }
-        buf+=dec.decode(x.value,{stream:true});
-        var lines=buf.split("\n"); buf=lines.pop();
-        lines.forEach(function(l){
-          if(l.indexOf("data:")!==0) return;
-          try{
-            var j=JSON.parse(l.slice(5).trim());
-            var parts=(j.candidates&&j.candidates[0]&&j.candidates[0].content&&j.candidates[0].content.parts)||[];
-            parts.forEach(function(p){ if(p.text) acc+=p.text; });
-          }catch(e){}
-        });
-        if(acc&&opts.onText) opts.onText({text:acc});
-        return pump();
-      });
-    }
-    return pump();
-  }
-  function callGemini(input,opts,json,tries){
-    opts=opts||{}; tries=tries||0;
-    var stream=!!opts.onText&&!json&&!!window.ReadableStream;
-    return post(input,json,stream,opts.image).then(function(r){
-      if(r.status===429||r.status>=500){
-        if(tries<2) return wait(700*(tries+1)).then(function(){return callGemini(input,opts,json,tries+1)});
-        throw {code:r.status===429?"rate_limited":"busy",status:r.status};
-      }
-      if(!r.ok) return r.text().then(function(t){throw {code:"error",status:r.status,detail:t.slice(0,250)}});
-      if(stream) return readStream(r,opts);
-      return r.json().then(function(d){
-        if(!d||typeof d.text!=="string"||!d.text) throw {code:"error"};
-        if(opts.onText) opts.onText({text:d.text});
-        return {text:d.text};
-      });
-    }).catch(function(e){
-      if(e instanceof TypeError&&tries<1) return wait(500).then(function(){return callGemini(input,opts,json,tries+1)});
-      throw e;
-    });
-  }
-  var gemini=function(input,opts){return callGemini(input,opts,false)};
-  gemini.json=function(input,opts){return callGemini(input,opts,true).then(function(r){return JSON.parse(r.text.replace(/```json|```/g,"").trim())})};
-  var samplePromise=Promise.resolve(WORKER_URL.indexOf("http")===0?gemini:null);
+  var samplePromise = (window.claude && window.claude.use) ? window.claude.use("sample") : Promise.resolve(null);
   samplePromise.then(function(s){
     if(!s){
       var b=$("aiBanner"); b.hidden=false;
-      b.textContent="AI is not set up yet. The Quick FAQ still works.";
+      b.textContent="The AI tutor, career planner and mentor chat are coming soon to this public site. The Quick FAQ below works now.";
     }
   });
   function errText(e){
-    if(e && e.code==="none") return "AI is not set up yet.";
+    if(e && e.code==="none") return "The AI features are coming soon to this site. Try the Quick FAQ for now.";
+    if(e && e.code==="noimg") return "Reading photos is not available here. Please type the question instead.";
+    if(e && e.code==="img") return "Could not read that photo. Try another one.";
     if(e && e.code==="not_granted") return "AI access was not allowed. Reload the page and allow it to continue.";
-    if(window.console&&console.error) console.error("StudyPath AI error",e);
-    if(e && (e.code==="rate_limited"||e.code==="busy")) return "Many students are using StudyPath right now. Please try again in a few seconds. The Quick FAQ works instantly.";
-    return "Sorry, we could not get an answer right now. Please try again in a few seconds.";
+    if(e && e.code==="rate_limited") return "Too many requests. Wait a moment and try again.";
+    return "Something went wrong. Please try again.";
   }
   function busy(el,label){el.textContent="";var b=h("div","busy");b.appendChild(h("span","spin"));b.appendChild(h("span",null,label||"Working on it"));el.appendChild(b)}
   function setBtn(btn,on,label){
@@ -434,64 +482,104 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       else{list=null;var p=h("p");inline(p,line);el.appendChild(p)}
     });
   }
-  function ask(prompt,box,body,label,img){
+  function ask(prompt,box,body,label,extra){
     return samplePromise.then(function(sample){
       if(!sample) throw {code:"none"};
       box.hidden=false; body.classList.remove("err"); busy(body,label);
       var first=true;
-      return sample(prompt,{cache:false,image:img||null,onText:function(r){if(r.text){render(body,r.text)}}});
+      var run=function(){return sample(prompt,Object.assign({cache:false,onText:function(r){if(r.text){render(body,r.text)}}},extra||{}))};
+      if(extra&&extra.images){
+        return Promise.resolve(sample.limits?sample.limits():{}).then(function(l){if(!l||!l.images)throw {code:"noimg"};return run()});
+      }
+      return run();
     });
   }
 
   /* ---------- tabs ---------- */
-  var tabs=["ask","career","chat","faq"];
-  tabs.forEach(function(n){
-    $("t-"+n).addEventListener("click",function(){
-      $("p-"+n).scrollIntoView({behavior:"smooth",block:"start"});
+  var tabs=["ask","exam","career","chat","faq"];
+  /* ---------- sign in (Firebase Authentication) ---------- */
+  /* Paste your Firebase web app config here. These values are safe to be public. */
+  var FIREBASE_CONFIG={
+    apiKey:"AIzaSyD0wd9DK_F3fGwExAX13_ZaJqIdFnVMchs",
+    authDomain:"studypath-5f997.firebaseapp.com",
+    projectId:"studypath-5f997",
+    appId:"1:949006726559:web:7c3bc701cd05bfdd2579aa"
+  };
+  var fbAuth=null;
+  try{
+    if(window.firebase && FIREBASE_CONFIG.apiKey.indexOf("PASTE")!==0){
+      firebase.initializeApp(FIREBASE_CONFIG);
+      fbAuth=firebase.auth();
+    }
+  }catch(e){fbAuth=null}
+  /* Without a working config the site stays open, so nobody gets locked out. */
+  var gateOn=!!fbAuth, authKnown=!fbAuth, currentUser=null, currentTab="ask";
+  var gated={ask:1,exam:1,career:1,chat:1};
+  function showTab(n){
+    currentTab=n;
+    var locked=gateOn&&!currentUser&&!!gated[n];
+    tabs.forEach(function(k){
+      $("t-"+k).setAttribute("aria-selected",k===n?"true":"false");
+      $("p-"+k).hidden = k!==n || (gateOn&&!currentUser&&!!gated[k]);
     });
-  });
-  if(window.IntersectionObserver){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting){var id=e.target.id.slice(2);tabs.forEach(function(k){$("t-"+k).setAttribute("aria-selected",k===id?"true":"false")})}
-    })},{rootMargin:"-30% 0px -60% 0px"});
-    tabs.forEach(function(k){io.observe($("p-"+k))});
+    $("authCard").hidden = !(locked&&authKnown);
+    if(locked&&!authKnown){$("p-"+n).hidden=true}
   }
+  tabs.forEach(function(n){$("t-"+n).addEventListener("click",function(){showTab(n)})});
+  if(fbAuth){
+    fbAuth.onAuthStateChanged(function(u){
+      authKnown=true;currentUser=u||null;
+      $("userBox").hidden=!u;
+      if(u){$("userName").textContent=u.displayName||u.email||"Student"}
+      showTab(currentTab);
+    });
+    $("googleBtn").addEventListener("click",function(){
+      var b=this;b.disabled=true;$("authMsg").textContent="";
+      var provider=new firebase.auth.GoogleAuthProvider();
+      fbAuth.signInWithPopup(provider).catch(function(e){
+        var c=(e&&e.code)||"";
+        if(c==="auth/popup-blocked"||c==="auth/operation-not-supported-in-this-environment"){return fbAuth.signInWithRedirect(provider)}
+        $("authMsg").textContent=
+          c==="auth/popup-closed-by-user"||c==="auth/cancelled-popup-request"?"Sign-in was cancelled. Please try again.":
+          c==="auth/unauthorized-domain"?"This website is not allowed yet. Add it in Firebase under Authentication, Settings, Authorized domains.":
+          "Could not sign in. Please try again.";
+      }).then(function(){b.disabled=false});
+    });
+    $("logoutBtn").addEventListener("click",function(){fbAuth.signOut()});
+  }
+  showTab("ask");
 
-  /* ---------- photos ---------- */
-  var askImg=null,chatImg=null;
+  /* ---------- photo of a question ---------- */
+  var photoBlob=null;
   function shrink(file){
     return new Promise(function(res,rej){
-      var url=URL.createObjectURL(file),im=new Image();
+      var u=URL.createObjectURL(file),im=new Image();
       im.onload=function(){
-        var sc=Math.min(1,1280/Math.max(im.width,im.height)),c=document.createElement("canvas");
-        c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);
-        c.getContext("2d").drawImage(im,0,0,c.width,c.height);
-        URL.revokeObjectURL(url);res(c.toDataURL("image/jpeg",0.8));
+        var w=im.naturalWidth,ht=im.naturalHeight,k=Math.min(1,1600/Math.max(w,ht));
+        var c=document.createElement("canvas");c.width=Math.max(1,Math.round(w*k));c.height=Math.max(1,Math.round(ht*k));
+        c.getContext("2d").drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);
+        c.toBlob(function(b){b?res(b):rej({code:"img"})},"image/jpeg",0.85);
       };
-      im.onerror=function(){URL.revokeObjectURL(url);rej(new Error("img"))};
-      im.src=url;
+      im.onerror=function(){URL.revokeObjectURL(u);rej({code:"img"})};
+      im.src=u;
     });
   }
-  function pick(inputId,thumbId,imgId,setter){
-    $(inputId).addEventListener("change",function(){
-      var f=this.files&&this.files[0];this.value="";
-      if(!f) return;
-      shrink(f).then(function(d){setter(d);$(imgId).src=d;$(thumbId).hidden=false})
-        .catch(function(){alert("Could not read that image. Please try another photo.")});
-    });
+  function photoReset(){
+    photoBlob=null;$("photo").value="";
+    var im=$("photoPrev");if(im.dataset.u){URL.revokeObjectURL(im.dataset.u);im.dataset.u=""}
+    im.hidden=true;im.removeAttribute("src");$("photoClear").hidden=true;
   }
-  pick("askFileCam","askThumb","askThumbImg",function(d){askImg=d});
-  pick("askFile","askThumb","askThumbImg",function(d){askImg=d});
-  pick("chatFile","chatThumb","chatThumbImg",function(d){chatImg=d});
-  $("askCam").addEventListener("click",function(){$("askFileCam").click()});
-  $("askUp").addEventListener("click",function(){$("askFile").click()});
-  $("chatCam").addEventListener("click",function(){$("chatFile").click()});
-  $("askThumbX").addEventListener("click",function(){askImg=null;$("askThumb").hidden=true});
-  $("chatThumbX").addEventListener("click",function(){chatImg=null;$("chatThumb").hidden=true});
+  $("photoBtn").addEventListener("click",function(){$("photo").click()});
+  $("photoClear").addEventListener("click",photoReset);
+  $("photo").addEventListener("change",function(){
+    var f=this.files&&this.files[0];if(!f)return;
+    var im=$("photoPrev");if(im.dataset.u)URL.revokeObjectURL(im.dataset.u);
+    photoBlob=f;var u=URL.createObjectURL(f);im.dataset.u=u;im.src=u;im.hidden=false;$("photoClear").hidden=false;
+  });
 
   /* ---------- get answers ---------- */
   var lastQ="",lastA="";
-  var examples=["Solve x^2 - 5x + 6 = 0","Explain photosynthesis in simple steps","What is the difference between a noun and a pronoun?","Why does the Earth have seasons?"];
+  var examples=["Solve x^2 - 5x + 6 = 0","Explain photosynthesis in simple steps","What is the difference between a noun and a pronoun?","Why does the Earth have seasons?","JEE: Find the derivative of x^2 sin x","NEET: Why does a heterozygous cross give a 3:1 ratio?"];
   var eb=$("examples");
   examples.forEach(function(t){
     var c=h("button","chip",t);c.type="button";
@@ -501,14 +589,14 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
   $("question").addEventListener("input",function(){$("count").textContent=this.value.length+" / 1500"});
   $("askForm").addEventListener("submit",function(e){
     e.preventDefault();
-    var q=$("question").value.trim(); if(!q&&!askImg) return;
+    var q=$("question").value.trim(); if(!q&&!photoBlob) return;
     var btn=$("askBtn"); setBtn(btn,true,"Explaining"); $("askMore").hidden=true; $("practiceOut").hidden=true;
-    var prompt="You are a patient tutor for a student. Subject: "+$("subject").value+". Explain "+$("depth").value+
+    var ex=$("examFocus").value;var prompt="You are a patient tutor for a student. Subject: "+$("subject").value+(ex?". The student is preparing for "+ex+". Mention how the exam tests this idea and any common trap or quick method.":"")+". Explain "+$("depth").value+
       ". Show the working step by step in plain language, then finish with one line starting 'Remember:' that gives the key idea. "+
       "If the question is unclear, state your assumption first. If you are not sure, say so. "+
-      "Write maths in plain text (for example x^2 + 3x = 0), no LaTeX. Use short paragraphs and simple lists."+(askImg?" The problem is in the attached photo. Read it carefully, state the question in one line first, then solve it. If part of the photo is unclear, say what you could not read.":"")+"\n\nStudent question:\n"+(q||"(see the photo)");
-    ask(prompt,$("askOut"),$("askBody"),"Working out the answer",askImg).then(function(r){
-      lastQ=q||"the problem in the photo"; lastA=r.text; render($("askBody"),r.text); $("askMore").hidden=false;
+      "Write maths in plain text (for example x^2 + 3x = 0), no LaTeX. Use short paragraphs and simple lists.\n\nStudent question:\n"+(q||"(see the attached photo)")+(photoBlob?"\n\nThe question is in the attached photo. Read it carefully and restate it in one line before answering. If the photo is unclear, say what you could not read.":"");
+    (photoBlob?shrink(photoBlob):Promise.resolve(null)).then(function(bl){return ask(prompt,$("askOut"),$("askBody"),"Working out the answer",bl?{images:[bl]}:null)}).then(function(r){
+      lastQ=q||"(a question from a photo)"; lastA=r.text; render($("askBody"),r.text); $("askMore").hidden=false;
     }).catch(function(err){
       var b=$("askBody"); $("askOut").hidden=false; b.textContent=errText(err); b.classList.add("err");
     }).then(function(){setBtn(btn,false)});
@@ -619,13 +707,10 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
   $("chatClear").addEventListener("click",function(){history=[];$("msgs").textContent="";welcome()});
   $("chatForm").addEventListener("submit",function(e){
     e.preventDefault();
-    var t=$("chatInput").value.trim(),im=chatImg;if(!t&&!im) return;
-    if(!t) t="Please solve the problem in this photo step by step.";
-    $("chatInput").value="";chatImg=null;$("chatThumb").hidden=true;
-    history.push({role:"user",content:im?t+"\n(A photo is attached. Read it, then answer fully with steps.)":t});
-    var mb=addMsg("me","You");
-    if(im){var pi=document.createElement("img");pi.className="snap";pi.alt="Your photo";pi.src=im;mb.appendChild(pi)}
-    mb.appendChild(document.createTextNode(t));
+    var t=$("chatInput").value.trim();if(!t) return;
+    $("chatInput").value="";
+    history.push({role:"user",content:t});
+    addMsg("me","You").textContent=t;
     var ai=addMsg("ai","Mentor");busy(ai,"Thinking");
     var btn=$("chatBtn");btn.disabled=true;
     var recent=history.slice(-12);
@@ -633,7 +718,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     var payload=recent.map(function(m,i){return i===0?{role:m.role,content:INSTR+m.content}:m});
     samplePromise.then(function(sample){
       if(!sample) throw {code:"none"};
-      return sample(payload,{cache:false,image:im,onText:function(r){if(r.text)render(ai,r.text)}});
+      return sample(payload,{cache:false,onText:function(r){if(r.text)render(ai,r.text)}});
     }).then(function(r){
       render(ai,r.text);history.push({role:"assistant",content:r.text});
     }).catch(function(err){
@@ -641,13 +726,62 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     }).then(function(){btn.disabled=false;var m=$("msgs");m.scrollTop=m.scrollHeight});
   });
 
-  /* ---------- share ---------- */
-  $("shareBtn").addEventListener("click",function(e){
-    if(navigator.share){e.preventDefault();navigator.share({title:"StudyPath by Siddhant",text:"Free homework help, career guide and study mentor for students.",url:"https://siddhuuu-source.github.io/studypath/"}).catch(function(){})}
+  /* ---------- exam prep ---------- */
+  var LET=["A","B","C","D","E"];
+  function renderQuiz(out,qs){
+    qs=(qs||[]).map(function(q){if(q)q.answer=Number(q.answer);return q}).filter(function(q){
+      return q&&q.q&&Array.isArray(q.options)&&q.options.length>=2&&q.answer>=0&&q.answer<q.options.length&&q.answer%1===0;
+    });
+    out.textContent="";
+    if(!qs.length){out.appendChild(h("div","banner","Could not make valid questions this time. Please try again."));return}
+    var done=0,score=0;
+    var bar=h("div","card");var sc=h("p","score","Score: 0 / "+qs.length);bar.appendChild(sc);out.appendChild(bar);
+    var wrap=h("div","careers");wrap.style.marginTop="16px";
+    qs.forEach(function(q,qi){
+      var card=h("article","career");
+      card.appendChild(h("p","qtext",(qi+1)+". "+q.q));
+      var list=h("div","opts");var btns=[];
+      q.options.slice(0,5).forEach(function(o,oi){
+        var b=h("button","opt");b.type="button";
+        b.appendChild(h("b",null,LET[oi]+"."));b.appendChild(h("span",null,String(o)));
+        b.addEventListener("click",function(){
+          btns.forEach(function(x){x.disabled=true});
+          if(oi===q.answer){b.classList.add("right");score++}
+          else{b.classList.add("wrong");btns[q.answer].classList.add("right")}
+          done++;sc.textContent="Score: "+score+" / "+qs.length;
+          var msg=(oi===q.answer?"Correct. ":"The correct answer is "+LET[q.answer]+". ")+(q.explanation||"");
+          card.appendChild(h("p","expl",msg));
+          if(done===qs.length){
+            var pct=Math.round(100*score/qs.length);
+            sc.textContent="Finished: "+score+" / "+qs.length+" ("+pct+"%)";
+            sc.scrollIntoView({block:"nearest"});
+          }
+        });
+        btns.push(b);list.appendChild(b);
+      });
+      card.appendChild(list);wrap.appendChild(card);
+    });
+    out.appendChild(wrap);
+  }
+  $("examForm").addEventListener("submit",function(e){
+    e.preventDefault();
+    var out=$("examOut"),btn=$("examBtn");
+    var n=parseInt($("examCount").value,10)||5;
+    var topic=$("examTopic").value.trim();
+    setBtn(btn,true,"Preparing questions");
+    out.textContent="";var wait=h("div","card");busy(wait,"Writing "+n+" questions");out.appendChild(wait);
+    var prompt="You are an exam coach for Indian entrance exams. Write "+n+" original multiple-choice practice questions for "+$("examName").value+", subject "+$("examSubject").value+
+      (topic?", topic: "+topic:", mixed topics from the syllabus")+", difficulty "+$("examLevel").value+
+      ". Match the exam's style and syllabus, but do not copy real past-paper questions. Each question has exactly 4 options and exactly one correct option. "+
+      "Write maths and science in plain text (x^2, sqrt(3), m/s^2), no LaTeX. Include a short explanation of why the answer is correct. "+
+      "Return ONLY JSON: {\"questions\":[{\"q\":\"\",\"options\":[\"\",\"\",\"\",\"\"],\"answer\":0,\"explanation\":\"\"}]} where answer is the 0-based index of the correct option.";
+    samplePromise.then(function(sample){
+      if(!sample) throw {code:"none"};
+      return sample.json(prompt,{cache:false});
+    }).then(function(data){renderQuiz(out,data&&data.questions)})
+    .catch(function(err){out.textContent="";out.appendChild(h("div","banner",errText(err)))})
+    .then(function(){setBtn(btn,false)});
   });
-
-  /* ---------- install as app ---------- */
-  if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}
 
   /* ---------- quick FAQ ---------- */
   var faq=[
@@ -676,5 +810,8 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
   });
 })();
 </script>
-
-</body></html>
+<script>
+if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){})})}
+</script>
+</body>
+</html>
