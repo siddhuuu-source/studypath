@@ -1,4 +1,4 @@
-<!doctype html>
+!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -191,7 +191,11 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
 .authh{font:800 1.3rem/1.2 var(--display);margin:0;letter-spacing:-.01em}
 .card a,.note a{color:var(--accent-ink)}
 #examRange{width:100%;padding:0;border:0;background:transparent;min-height:0;margin-top:10px;accent-color:var(--accent,#0D8F82)}
+.katex{font-size:1.08em}.katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
 </head>
 <body>
 <header class="band">
@@ -504,7 +508,8 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
   sample.json = function (p) {
     return callAI(toMsgs(p), true).then(function (t) {
       t = t.replace(/^```(?:json)?\s*|\s*```$/g, "").trim();
-      return JSON.parse(t);
+      try { return JSON.parse(t); }
+      catch (e1) { return JSON.parse(t.replace(/\\\\|\\(?!["\/u])/g, function (m) { return m === "\\\\" ? m : "\\\\"; })); }
     });
   };
   sample.limits = function () { return { images: true }; };
@@ -541,6 +546,14 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       else parent.appendChild(document.createTextNode(p));
     });
   }
+  function math(el){
+    try{
+      if(window.renderMathInElement) renderMathInElement(el,{
+        delimiters:[{left:"$$",right:"$$",display:true},{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false},{left:"$",right:"$",display:false}],
+        throwOnError:false,ignoredTags:["script","style","textarea","code","pre"]
+      });
+    }catch(e){}
+  }
   function render(el,text){
     el.textContent=""; var list=null,type=null;
     text.split("\n").forEach(function(raw){
@@ -555,6 +568,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
         var li2=h("li");inline(li2,m[1]);list.appendChild(li2)}
       else{list=null;var p=h("p");inline(p,line);el.appendChild(p)}
     });
+    math(el);
   }
   function ask(prompt,box,body,label,extra){
     return samplePromise.then(function(sample){
@@ -671,7 +685,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     var ex=$("examFocus").value;var prompt="You are a patient tutor for a student. Subject: "+$("subject").value+(ex?". The student is preparing for "+ex+". Mention how the exam tests this idea and any common trap or quick method.":"")+". Explain "+$("depth").value+
       ". Show the working step by step in plain language, then finish with one line starting 'Remember:' that gives the key idea. "+
       "If the question is unclear, state your assumption first. If you are not sure, say so. "+
-      "Write maths in plain text (for example x^2 + 3x = 0), no LaTeX. Use short paragraphs and simple lists.\n\nStudent question:\n"+(q||"(see the attached photo)")+(photoBlob?"\n\nThe question is in the attached photo. Read it carefully and restate it in one line before answering. If the photo is unclear, say what you could not read.":"");
+      "Write maths using LaTeX between dollar signs: inline like $x^2 + 3x = 0$, $\\frac{a}{b}$, $\\sqrt{3}$, vectors like $\\vec{r} = x\\hat{i} + y\\hat{j} + z\\hat{k}$, and put each key equation on its own line between $$ and $$. Never use dollar signs for money; write rupees as Rs. Use short paragraphs and simple lists.\n\nStudent question:\n"+(q||"(see the attached photo)")+(photoBlob?"\n\nThe question is in the attached photo. Read it carefully and restate it in one line before answering. If the photo is unclear, say what you could not read.":"");
     (photoBlob?shrink(photoBlob):Promise.resolve(null)).then(function(bl){return ask(prompt,$("askOut"),$("askBody"),"Working out the answer",bl?{images:[bl]}:null)}).then(function(r){
       lastQ=q||"(a question from a photo)"; lastA=r.text; render($("askBody"),r.text); $("askMore").hidden=false;
     }).catch(function(err){
@@ -771,7 +785,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
     c.addEventListener("click",function(){$("chatInput").value=t;$("chatForm").requestSubmit()});
     sb.appendChild(c);
   });
-  var INSTR="You are StudyPath Mentor, a warm, practical guide for school and college students. Give clear, honest, concise advice (under 180 words unless asked for more). Use simple language and short lists. Never invent facts about exams, fees or cut-offs; say when something should be checked with the official source or a counsellor. If a student sounds very stressed or unsafe, be kind and suggest talking to a trusted adult or a helpline.\n\n";
+  var INSTR="You are StudyPath Mentor, a warm, practical guide for school and college students. Give clear, honest, concise advice (under 180 words unless asked for more). Use simple language and short lists. Write any maths using LaTeX between dollar signs, for example $\\vec{r} = x\\hat{i}$. Never invent facts about exams, fees or cut-offs; say when something should be checked with the official source or a counsellor. If a student sounds very stressed or unsafe, be kind and suggest talking to a trusted adult or a helpline.\n\n";
   function addMsg(cls,label){
     var d=h("div","msg "+cls);d.appendChild(h("small",null,label));
     var b=h("div","bubble");d.appendChild(b);$("msgs").appendChild(d);return b;
@@ -805,8 +819,16 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
 
   /* ---------- exam prep ---------- */
   var LET=["A","B","C","D","E"];
+  function texFix(t){
+    if(typeof t!=="string"||t.indexOf("$")<0) return t;
+    return t.replace(/\f/g,"\\f").replace(/\t/g,"\\t").replace(/\x08/g,"\\b").replace(/\r/g,"\\r").replace(/\n/g,"\\n");
+  }
   function cleanQs(qs){
-    return (qs||[]).map(function(q){if(q)q.answer=Number(q.answer);return q}).filter(function(q){
+    return (qs||[]).map(function(q){
+      if(q){q.answer=Number(q.answer);q.q=texFix(q.q);q.explanation=texFix(q.explanation);
+        if(Array.isArray(q.options)) q.options=q.options.map(texFix);}
+      return q;
+    }).filter(function(q){
       return q&&q.q&&Array.isArray(q.options)&&q.options.length>=2&&q.answer>=0&&q.answer<q.options.length&&q.answer%1===0;
     });
   }
@@ -842,12 +864,12 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
               if(oi===q.answer){b.classList.add("right");st.score++}
               else{b.classList.add("wrong");btns[q.answer].classList.add("right")}
               st.done++;upd();
-              card.appendChild(h("p","expl",(oi===q.answer?"Correct. ":"The correct answer is "+LET[q.answer]+". ")+(q.explanation||"")));
+              var ex=h("p","expl",(oi===q.answer?"Correct. ":"The correct answer is "+LET[q.answer]+". ")+(q.explanation||""));card.appendChild(ex);math(ex);
               if(st.final&&st.done===st.total) sc.scrollIntoView({block:"nearest"});
             });
             btns.push(b);list.appendChild(b);
           });
-          card.appendChild(list);wrap.appendChild(card);
+          card.appendChild(list);wrap.appendChild(card);math(card);
         });
         upd();
       }
@@ -871,7 +893,7 @@ footer .inner{display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 
       var p="You are an exam coach for Indian entrance exams. Write "+need+" original multiple-choice practice questions for "+$("examName").value+", subject "+$("examSubject").value+
         (topic?", topic: "+topic:", mixed topics from the syllabus")+", difficulty "+$("examLevel").value+
         ". Match the exam's style and syllabus, but do not copy real past-paper questions. Each question has exactly 4 options and exactly one correct option. "+
-        "Write maths and science in plain text (x^2, sqrt(3), m/s^2), no LaTeX. Include a short explanation of why the answer is correct. ";
+        "Write maths and science using LaTeX between dollar signs (for example $x^2$, $\\\\sqrt{3}$, $\\\\vec{F} = m\\\\vec{a}$, $\\\\hat{i}$). Because the answer is JSON, every backslash must be doubled exactly as shown. Never use dollar signs for money. Include a short explanation of why the answer is correct. ";
       if(stems.length) p+="This is part "+(i+1)+" of "+batches+" of a longer set. Cover different sub-topics and do not repeat these questions already written: "+stems.slice(-40).join(" | ")+". ";
       return p+"Return ONLY JSON: {\"questions\":[{\"q\":\"\",\"options\":[\"\",\"\",\"\",\"\"],\"answer\":0,\"explanation\":\"\"}]} where answer is the 0-based index of the correct option.";
     }
